@@ -1,0 +1,60 @@
+.app {
+  width: min(100% - 2rem, 75rem);
+  min-height: 100svh;
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+
+  min-height: 5rem;
+  padding-block: var(--space-4);
+}
+
+.game-layout {
+  flex: 1;
+
+  display: grid;
+  place-items: center;
+
+  min-width: 0;
+  padding-block: var(--space-4) var(--space-6);
+}
+
+.play-area {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.board-stage {
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (max-width: 30rem) {
+  .app {
+    width: calc(100% - 1.5rem);
+  }
+}

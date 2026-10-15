@@ -1,0 +1,276 @@
+/* Marca */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  font-size: 1.125rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.brand__symbol {
+  color: var(--color-accent);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+/* Botones */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+
+  font-size: var(--font-size-small);
+  font-weight: 650;
+  text-align: center;
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.button--primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.button--secondary {
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-surface-soft);
+}
+
+/* Panel de configuración */
+
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field__label {
+  font-size: var(--font-size-small);
+  font-weight: 650;
+}
+
+.field__control {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.field__hint,
+.settings-note {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.settings-note {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Tablero */
+
+.board {
+  --board-dimension: 3;
+  --piece-size: 58%;
+
+  display: grid;
+  grid-template-columns: repeat(
+    var(--board-dimension),
+    minmax(0, 1fr)
+  );
+  gap: var(--space-2);
+
+  width: min(100%, 34rem, calc(100svh - 9rem));
+  aspect-ratio: 1;
+  padding: var(--space-3);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+
+  background-color: #e9edf4;
+  box-shadow: var(--shadow-panel);
+}
+
+.board__cell {
+  display: grid;
+  place-items: center;
+
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 1;
+
+  border: 1px solid rgb(36 41 56 / 5%);
+  border-radius: var(--radius-medium);
+
+  background-color: var(--color-surface);
+}
+
+/* Tamaños de las fichas */
+
+.board[data-size="small"] {
+  --piece-size: 42%;
+}
+
+.board[data-size="medium"] {
+  --piece-size: 58%;
+}
+
+.board[data-size="large"] {
+  --piece-size: 74%;
+}
+
+/* Fichas */
+
+.piece {
+  display: block;
+
+  width: var(--piece-size);
+  aspect-ratio: 1;
+
+  background-color: var(--piece-color);
+}
+
+.piece--type-1 {
+  --piece-color: var(--color-piece-1);
+}
+
+.piece--type-2 {
+  --piece-color: var(--color-piece-2);
+}
+
+.piece--type-3 {
+  --piece-color: var(--color-piece-3);
+}
+
+.piece--circle {
+  border-radius: 50%;
+}
+
+.piece--square {
+  border-radius: 12%;
+}
+
+.piece--triangle {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* Estado de la partida */
+
+.game-status {
+  max-width: 36rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  text-align: center;
+}
+
+/* Menú de opciones */
+
+.options-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+
+  background-color: var(--color-surface);
+  color: var(--color-text);
+
+  font-size: var(--font-size-small);
+  font-weight: 650;
+
+  list-style: none;
+  cursor: pointer;
+}
+
+.options-menu__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.options-menu__trigger:hover,
+.options-menu[open] .options-menu__trigger {
+  background-color: var(--color-surface-soft);
+  border-color: var(--color-accent);
+}
+
+.options-menu__panel {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+
+  width: min(21rem, 100%);
+  max-height: calc(100svh - 7rem);
+  overflow-y: auto;
+
+  padding: var(--space-6);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+
+  background-color: var(--color-surface);
+  box-shadow: 0 1rem 3rem rgb(36 41 56 / 14%);
+}
+
+.options-menu__title {
+  margin-bottom: var(--space-5);
+}
+
+/* Instrucciones */
+
+.help-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+
+  border-top: 1px solid var(--color-border);
+}
+
+.help-section__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  margin: 0;
+  padding-left: var(--space-5);
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+}
+
+/* No reservar espacio para un mensaje vacío */
+
+.game-status:empty {
+  display: none;
+}

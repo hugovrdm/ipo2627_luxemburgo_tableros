@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Juego de fichas: intercambia sus posiciones y ordena el tablero por filas."
+  >
+
+  <title>Tablero — Ordena las fichas</title>
+
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components.css">
+</head>
+
+<body>
+  <div class="app">
+    <header class="app-header">
+      <a class="brand" href="./index.html" aria-label="Tablero, inicio">
+        <span class="brand__symbol" aria-hidden="true">▦</span>
+        <span>Tablero</span>
+      </a>
+
+      <details class="options-menu">
+        <summary class="options-menu__trigger">
+          <span aria-hidden="true">☰</span>
+          Opciones
+        </summary>
+
+        <div class="options-menu__panel">
+          <section aria-labelledby="settings-title">
+            <h2 class="options-menu__title" id="settings-title">
+              Configura el tablero
+            </h2>
+
+            <form class="settings-form" data-settings>
+              <div class="field">
+                <label class="field__label" for="dimension">
+                  Dimensión
+                </label>
+
+                <input
+                  class="field__control"
+                  id="dimension"
+                  name="dimension"
+                  type="number"
+                  min="3"
+                  step="1"
+                  value="3"
+                  required
+                  aria-describedby="dimension-hint"
+                  data-setting="dimension"
+                >
+
+                <p class="field__hint" id="dimension-hint">
+                  Número de filas y columnas. Mínimo 3.
+                </p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="piece-size">
+                  Tamaño de las fichas
+                </label>
+
+                <select
+                  class="field__control"
+                  id="piece-size"
+                  name="piece-size"
+                  data-setting="size"
+                >
+                  <option value="small">Pequeñas</option>
+                  <option value="medium" selected>Medianas</option>
+                  <option value="large">Grandes</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="appearance">
+                  Aspecto
+                </label>
+
+                <select
+                  class="field__control"
+                  id="appearance"
+                  name="appearance"
+                  data-setting="appearance"
+                >
+                  <option value="classic">Formas clásicas</option>
+                  <option value="alternative">Formas alternativas</option>
+                </select>
+              </div>
+
+              <p class="settings-note">
+                Cambiar un ajuste iniciará una nueva partida.
+              </p>
+
+              <button
+                class="button button--primary"
+                type="button"
+                data-action="new-game"
+              >
+                Nueva partida
+              </button>
+            </form>
+          </section>
+
+          <section class="help-section" aria-labelledby="help-title">
+            <h2 id="help-title">Cómo jugar</h2>
+
+            <ol class="help-section__steps">
+              <li>Arrastra una ficha sobre otra para intercambiarlas.</li>
+              <li>Ordena el tablero para que cada fila tenga un único tipo.</li>
+              <li>Completa todas las filas para terminar la partida.</li>
+            </ol>
+
+            <p class="field__hint">
+              En esta maqueta, el movimiento todavía no está disponible.
+            </p>
+          </section>
+        </div>
+      </details>
+    </header>
+
+    <main class="game-layout">
+  <section class="play-area" aria-label="Zona de juego">
+    <div class="board-stage">
+
+      <div
+        class="board"
+        data-board
+        data-size="medium"
+        role="group"
+        aria-label="Tablero de juego de 3 filas y 3 columnas"
+      >
+        <!-- Fila 1 -->
+
+        <div class="board__cell" data-row="0" data-column="0">
+          <span
+            class="piece piece--circle piece--type-1"
+            data-piece
+            data-type="1"
+            role="img"
+            aria-label="Ficha circular azul"
+          ></span>
+        </div>
+
+        <div class="board__cell" data-row="0" data-column="1">
+          <span
+            class="piece piece--square piece--type-2"
+            data-piece
+            data-type="2"
+            role="img"
+            aria-label="Ficha cuadrada naranja"
+          ></span>
+        </div>
+
+        <div class="board__cell" data-row="0" data-column="2">
+          <span
+            class="piece piece--triangle piece--type-3"
+            data-piece
+            data-type="3"
+            role="img"
+            aria-label="Ficha triangular verde"
+          ></span>
+        </div>
+
+        <!-- Fila 2 -->
+
+        <div class="board__cell" data-row="1" data-column="0">
+          <span
+            class="piece piece--triangle piece--type-3"
+            data-piece
+            data-type="3"
+            role="img"
+            aria-label="Ficha triangular verde"
+          ></span>
+        </div>
+
+        <div class="board__cell" data-row="1" data-column="1">
+          <span
+            class="piece piece--circle piece--type-1"
+            data-piece
+            data-type="1"
+            role="img"
+            aria-label="Ficha circular azul"
+          ></span>
+        </div>
+
+        <div class="board__cell" data-row="1" data-column="2">
+          <span
+            class="piece piece--square piece--type-2"
+            data-piece
+            data-type="2"
+            role="img"
+            aria-label="Ficha cuadrada naranja"
+          ></span>
+        </div>
+
+        <!-- Fila 3 -->
+
+        <div class="board__cell" data-row="2" data-column="0">
+          <span
+            class="piece piece--square piece--type-2"
+            data-piece
+            data-type="2"
+            role="img"
+            aria-label="Ficha cuadrada naranja"
+          ></span>
+        </div>
+
+        <div class="board__cell" data-row="2" data-column="1">
+          <span
+            class="piece piece--triangle piece--type-3"
+            data-piece
+            data-type="3"
+            role="img"
+            aria-label="Ficha triangular verde"
+          ></span>
+        </div>
+
+        <div class="board__cell" data-row="2" data-column="2">
+          <span
+            class="piece piece--circle piece--type-1"
+            data-piece
+            data-type="1"
+            role="img"
+            aria-label="Ficha circular azul"
+          ></span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="game-status" role="status" data-status></p>
+  </section>
+</main>
+  </div>
+</body>
+</html>
